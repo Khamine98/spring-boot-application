@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -11,9 +12,12 @@ import java.util.List;
 public class StudentController {
 
     @GetMapping
-    public List<String> findAllStudents(){
+    public List<Student> findAllStudents(){
 
-        return List.of("amine", "khaled");
+        return List.of(
+                new Student("amine", "khaled", LocalDate.now(),"kh.amine98@gmail.com",34),
+                new Student("amine", "khaled", LocalDate.now(),"kh.amine98@gmail.com",34)
+        );
 
     }
 
