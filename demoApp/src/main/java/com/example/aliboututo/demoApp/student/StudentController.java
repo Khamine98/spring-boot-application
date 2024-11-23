@@ -1,5 +1,7 @@
 package com.example.aliboututo.demoApp.student;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,13 +13,18 @@ import java.util.List;
 @RequestMapping("/api/v1/students")
 public class StudentController {
 
+
+    private StudentService service;
+
+    @Autowired
+    public StudentController(StudentService service) {
+        this.service = service;
+    }
+
     @GetMapping
     public List<Student> findAllStudents(){
 
-        return List.of(
-                new Student("amine", "khaled", LocalDate.now(),"kh.amine98@gmail.com",34),
-                new Student("amine", "khaled", LocalDate.now(),"kh.amine98@gmail.com",34)
-        );
+        return service.findAllStudents();
 
     }
 
